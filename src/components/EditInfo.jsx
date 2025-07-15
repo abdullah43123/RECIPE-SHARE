@@ -58,7 +58,7 @@ export default function AccountEditModal({ isOpen, onClose, user }) {
                   text: "Something went wrong!"
                 });
                 reset();
-                return;
+
               }
             }
           } catch (error) {
@@ -68,7 +68,7 @@ export default function AccountEditModal({ isOpen, onClose, user }) {
               text: "Something went wrong!"
             });
             reset();
-            return;
+
           }
         }
       } catch (error) {
@@ -78,7 +78,7 @@ export default function AccountEditModal({ isOpen, onClose, user }) {
           text: "Something went wrong!"
         });
         reset();
-        return;
+
       }
 
 
