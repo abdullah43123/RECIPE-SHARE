@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import AccountEditModal from '../components/EditInfo';
 import { Link } from 'react-router-dom';
-import { FaUser, FaEdit, FaHistory, FaSignOutAlt, FaUtensils } from 'react-icons/fa';
+import { FaHistory, FaSignOutAlt, FaUtensils } from 'react-icons/fa';
 import { FilterUser } from '../lib/users';
 import { useNavigate } from 'react-router-dom';
 import { SignOutUser } from '../lib/users';

@@ -3,8 +3,8 @@ import { FaHome, FaUtensils, FaHeart, FaSearch, FaPlus, FaUser } from 'react-ico
 import { FiLogOut } from 'react-icons/fi';
 import { GetAllUser } from '../lib/users';
 import { useEffect, useState } from 'react';
-import { GetAllRecipes } from '../lib/recipe';
 import { TbLogin } from "react-icons/tb";
+import { GetAllRecipes } from '../lib/recipe';
 
 export default function DashboardLayout() {
   const [users, setUsers] = useState([]);
