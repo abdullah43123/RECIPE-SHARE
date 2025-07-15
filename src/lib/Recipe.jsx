@@ -1,5 +1,4 @@
-import { supabase } from "../supabase/supabase";
-
+import { supabase } from "../supabase/Supabase.js";
 
 export const InsertRecipe = async ({ UserId, Image_Url, Title, Category, IsFavorite, Likes, PreparationTime, Serving, Ingredients, Steps }) => {
     try {

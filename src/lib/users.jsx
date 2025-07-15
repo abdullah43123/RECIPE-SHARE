@@ -1,4 +1,4 @@
-import { supabase } from "../supabase/supabase";
+import { supabase } from "../supabase/Supabase.js";
 
 export const CreateUser = async ({ Email, Password, Name }) => {
     try {
