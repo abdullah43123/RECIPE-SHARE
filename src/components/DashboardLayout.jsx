@@ -5,10 +5,12 @@ import { GetAllUser } from '../lib/users';
 import { useEffect, useState } from 'react';
 import { TbLogin } from "react-icons/tb";
 import { GetAllRecipes } from '../lib/recipe';
-
+import { useAuth } from '../context/AuthContext';
 export default function DashboardLayout() {
+  const { user } = useAuth();
   const [users, setUsers] = useState([]);
   const [recipies, setRecipies] = useState([]);
+  // const [showBtn, setShowBtn] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -19,7 +21,6 @@ export default function DashboardLayout() {
     }
     getData();
   }, [])
-
 
 
   return (
@@ -37,18 +38,19 @@ export default function DashboardLayout() {
           <Link to="/favorites" className="flex items-center p-2 rounded hover:bg-amber-700">
             <FaHeart className="mr-3" /> Favorites
           </Link>
-          <Link to="/create" className="flex items-center p-2 rounded hover:bg-amber-700">
+          {user ? <Link to="/create" className="flex items-center p-2 rounded hover:bg-amber-700">
             <FaPlus className="mr-3" /> Add Recipe
-          </Link>
+          </Link> : <Link to="/login" className="flex items-center p-2 rounded hover:bg-amber-700">
+            <FaPlus className="mr-3" /> Add Recipe
+          </Link>}
           <Link to="/account" className="flex items-center p-2 rounded hover:bg-amber-700">
             <FaUser className="mr-3" /> Account
           </Link>
-          <Link to="/login" className="flex items-center p-2 rounded hover:bg-amber-700">
-            <TbLogin className="mr-3" /> Login
-          </Link>
-          <Link to="/logout" className="flex items-center p-2 rounded hover:bg-amber-700">
+          {user ? <Link to="/logout" className="flex items-center p-2 rounded hover:bg-amber-700">
             <FiLogOut className="mr-3" /> Logout
-          </Link>
+          </Link> : <Link to="/login" className="flex items-center p-2 rounded hover:bg-amber-700">
+            <TbLogin className="mr-3" /> Login
+          </Link>}
         </nav>
       </div>
 
@@ -56,9 +58,9 @@ export default function DashboardLayout() {
       <div className="fixed bottom-0 left-0 right-0 bg-amber-800 text-white p-2 flex justify-around md:hidden">
         <Link to="/" className="p-2"><FaHome size={20} /></Link>
         <Link to="/my-recipes" className="p-2"><FaUtensils size={20} /></Link>
-        <Link to="/favorites" className="p-2"><FaHeart size={20} /></Link>
-        <Link to="/create" className="p-2"><FaPlus size={20} /></Link>
+        {user ? <Link to="/create" className="p-2"><FaPlus size={20} /></Link> : <Link to="/login" className="p-2"><FaPlus size={20} /></Link>}
         <Link to="/account" className="p-2"><FaUser size={20} /></Link>
+        {user ? <Link to="/logout" className="p-2"><FiLogOut size={20} /></Link> : <Link to="/login" className="p-2"><TbLogin size={20} /></Link>}
       </div>
 
       {/* Main Content */}
